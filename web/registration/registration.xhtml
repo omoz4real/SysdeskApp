@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Journey Management - New Task</title>
+        <h:outputStylesheet library="css" name="default.css" />
+        <h:outputStylesheet library="css" name="cssLayout.css"/>
+    </h:head>
+    <h:body>
+        <ui:composition template="/templates/mainTemplate.xhtml">
+            <ui:define name="content">              
+                <h:form prependId="false" styleClass="subform" style="margin-left: 400px">
+                    <h1 class="register"> Journey Management | New Task </h1>
+                    <h:commandLink disabled="true" action="registration" value="  New Task | " />
+                    <h:commandLink action="trips" value="   Add Trips | "/>
+                    <h:commandLink action="summary" value="   Summary    "/>
+                    <br/> <br/>
+                    <h:messages style="color:#c0392b"/>
+                    <h:panelGrid columns="2" cellspacing="3" cellpadding="3" styleClass="">
+                        <h:outputLabel value="Client:"/>
+                        <h:selectOneMenu onchange="submit()" value="#{registrationBean.client}" >
+                            <f:selectItems value="#{ClientsMap}"/>
+                        </h:selectOneMenu>
+                        <h:outputLabel value="Contact Name:"/>
+                        <h:selectOneMenu value="#{registrationBean.contactName}" >
+                            <f:selectItems value="#{registrationBean.cities}"/>
+                        </h:selectOneMenu>
+                        <h:outputLabel value="Start Date:"/>
+                        <p:calendar  value="#{registrationBean.startDate}" size="26" label="Start Date" id="startDate" showOn="button">
+                        </p:calendar>
+                        <h:outputLabel value="End Date:"/>
+                        <p:calendar value="#{registrationBean.endDate}" size="26" label="End Date" id="endDate" showOn="button">
+                        </p:calendar>
+                        <h:outputLabel value="Status:"/>
+                        <h:inputText value="#{registrationBean.status}" size="40"/>
+                        <h:outputLabel value="Phone Number(s):"/>
+                        <h:inputText value="#{registrationBean.phone}" size="40"/>
+                        Notification E-mails:
+                        <h:inputText value="#{registrationBean.email}" size="40"/>
+                    </h:panelGrid>
+                    <h:commandButton value="Previous" disabled="true" styleClass="apply"/>
+                    <h:commandButton value="Next" action="#{registrationBean.validateTask()}" styleClass="apply"/>
+                    <h:commandButton value="Finish" action="summary" styleClass="apply"/>
+                    <h:commandButton value="Cancel" action="#{registrationBean.loggedInUsername}" styleClass="apply"/>
+                    <br/><br/>                    
+                </h:form>
+                <br/><br/>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
