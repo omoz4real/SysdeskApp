@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <h:outputStylesheet library="css" name="default.css" />
+    </h:head>
+    <body>
+
+        <ui:composition template="./templates/mainTemplate.xhtml">
+<ui:define name="navigation">
+                
+            </ui:define>
+            <ui:define name="content">
+
+                <form method="POST" action="j_security_check" class="subform" style="padding-top: 20px; padding-bottom: 5px; margin-left: 400px">
+                    <h:panelGrid columns="2"  styleClass="panel">
+                        <h:outputLabel value="Username:"/>
+                        <input type="text" name="j_username" />
+                        
+                        <h:outputLabel value="Password:"/>
+                        <input type="password" name="j_password" />
+                    </h:panelGrid>
+  
+                    <h:panelGrid columns="2" style="padding-left: 70px; padding-top: 10px">
+                    <input type="submit" value="Login" class="apply" />
+                    <input type="reset" value="Reset"  class="apply"/>
+                    </h:panelGrid>
+                 
+                </form> 
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

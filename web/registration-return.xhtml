@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Return page</title>
+         <h:outputStylesheet library="css" name="cssLayout.css" />
+        <h:outputStylesheet library="css" name="default.css" />
+    </h:head>
+    <h:body>
+        <ui:composition template="/templates/mainTemplate.xhtml">
+            <ui:define name="content">
+        <h:form prependId="false">
+            <p>Hi There !</p>
+            <p>You have successfully added a new task and trip. Please click on the link below to add a new task and trip.</p>
+            <p><h:link value="Go Home" outcome="index"/> </p>
+        </h:form>
+            </ui:define>
+            </ui:composition>
+    </h:body>
+</html>
+

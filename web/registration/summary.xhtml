@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Journey Management - Summary</title>
+        <h:outputStylesheet library="css" name="cssLayout.css" />
+         <h:outputStylesheet library="css" name="default.css" />
+    </h:head>
+    <h:body>
+        <ui:composition template="/templates/mainTemplate.xhtml">
+            <ui:define name="content">
+                <h2 class="register">Journey Management | Summary</h2>
+                <p>Your Trip and Task summary. If this is correct, press the Add Task button to send your request, or Back to edit your request. </p>
+        <h:form prependId="false">
+
+            <h:commandLink action="registration" value="  New Task | " />
+            <h:commandLink action="trips" value="   Add Trips | "/>
+            <h:commandLink action="summary" value="   Summary    " disabled="true"/>
+<br/> <br/>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Client:"/>
+                <h:outputText value="#{registrationBean.client}"/>
+                <h:outputLabel value="Contact Name:"/>
+                <h:outputText value="#{registrationBean.contactName}"/>
+                <h:outputLabel value="Start Date:"/>
+                <h:outputText value="#{registrationBean.startDate}">
+                    <f:convertDateTime pattern="dd/MM/yyyy" />
+                </h:outputText>
+                <h:outputLabel value="End date:"/>
+                <h:outputText value="#{registrationBean.endDate}">
+                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                </h:outputText>
+                <h:outputLabel value="Status:"/>
+                <h:outputText value="#{registrationBean.status}"/>
+                <h:outputLabel value="Email:"/>
+                <h:outputText value="#{registrationBean.email}"/>
+                <h:outputLabel value="Phone Number(s):"/>
+                <h:outputText value="#{registrationBean.phone}"/>
+                <h:outputLabel value="Passengers Name:"/>
+                <h:outputText value="#{registrationBean.passengersName}"/>
+                <h:outputLabel value="No of Passengers:"/>
+                <h:outputText value="#{registrationBean.noOfPassengers}"/>
+                <h:outputLabel value="Office:"/>
+                <h:outputText value="#{registrationBean.office}"/>
+                <h:outputLabel value="Flight Carrier:"/>
+                <h:outputText value="#{registrationBean.flightCarrier}"/>
+                <h:outputLabel value="Type:"/>
+                <h:outputText value="#{registrationBean.type}"/>
+                <h:outputLabel value="Departure:"/>
+                <h:outputText value="#{registrationBean.departure}"/>
+                <h:outputLabel value="Destination:"/>
+                <h:outputText value="#{registrationBean.destination}"/>
+                <h:outputLabel value="Pick Up Date:"/>
+                <h:outputText value="#{registrationBean.pickupDate}">
+                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                </h:outputText>
+                <h:outputLabel value="Expected End Date:"/>
+                <h:outputText value="#{registrationBean.expectedEndDate}">
+                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                </h:outputText>
+                <h:outputLabel value="Expected Departure Time(EDT):"/>
+                <h:outputText value="#{registrationBean.expectedDepartureTime}">
+                    <f:convertDateTime pattern="HH:mm a" />
+                </h:outputText>
+                <h:outputLabel value="Vehicle:"/>
+                <h:outputText value="#{registrationBean.vehicle}"/>
+                <h:outputLabel value="Vehicle Type:"/>
+                <h:outputText value="#{registrationBean.vehicleType}"/>
+    
+            </h:panelGrid>
+            <h:commandButton value="Previous" action="trips" styleClass="apply"/>
+            <h:commandButton value="Next" disabled="true" styleClass="apply"/>
+            <h:commandButton value="Add Task" action="#{registrationBean.saveTask()}" styleClass="apply"/>
+            <h:commandButton value="Cancel" action="registration-return" styleClass="apply"/>
+
+        </h:form>
+        <br/><br/>
+       
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

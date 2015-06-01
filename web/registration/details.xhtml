@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <h:outputStylesheet library="css" name="default.css" />
+        <h:outputStylesheet library="css" name="cssLayout.css"/>
+    </h:head>
+    <body>
+
+        <ui:composition template="./../templates/mainTemplate.xhtml">
+
+            <ui:define name="content">
+                <f:view>
+
+
+                    <h:form styleClass="subform" style="margin-left: 400px">
+                        <h1 class="register">Edit/Update Task Details</h1>
+                        <h:panelGrid columns="2" cellspacing="3" cellpadding="3">
+                            <h:outputLabel value="Id:" for="id" />
+                            <h:inputText id="id" value="#{registrationBean.details.id}" title="Id" required="true" requiredMessage="The Id field is required." disabled="true"/>
+                            <h:outputLabel value="Client:" for="client" />
+                            <h:inputText id="client" value="#{registrationBean.details.client}" title="Client" size="26" disabled="true"/>
+                            <h:outputLabel value="ContactName:" for="contactName" />
+                            <h:inputText id="contactName" value="#{registrationBean.details.contactName}" title="ContactName" size="26" disabled="true"/>
+                            <h:outputLabel value="Email:" for="email" />
+                            <h:inputText id="email" value="#{registrationBean.details.email}" title="Email" size="26"/>
+                            <h:outputLabel value="Phone:" for="phone" />
+                            <h:inputText id="phone" value="#{registrationBean.details.phone}" title="Phone" size="26"/>
+                            <h:outputLabel value="Status:" for="status" />
+                            <h:inputText id="status" value="#{registrationBean.details.status}" title="Status" size="26"/>
+                            <h:outputLabel value="StartDate:" for="startDate" />
+                            <h:inputText id="startDate" value="#{registrationBean.details.startDate}" title="StartDate" size="26">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:inputText>
+                            <h:outputLabel value="EndDate:" for="endDate" />
+                            <h:inputText id="endDate" value="#{registrationBean.details.endDate}" title="EndDate" size="26">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:inputText>
+
+                        </h:panelGrid>
+
+                        <h:commandButton id="update" value="Update" action="#{registrationBean.update}" styleClass="apply"/> 
+                        <h:commandButton id="back" value="Back" action="#{registrationBean.list}" styleClass="apply"/>
+                    </h:form>
+                </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+<!--rowStyleClass="#{(rowIndex mod 2) eq 0 ? 'first-row' : 'second-row'}"-->
+        <ui:composition template="./../templates/mainTemplate.xhtml">
+
+            <ui:define name="content">
+                <h:form>
+                    <p:dataTable value="#{registrationBean.trip}" var="cust" styleClass="people" rows="15"
+                                 paginator="true" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 rowsPerPageTemplate="15,20,25"
+                                 rowIndexVar="rowIndex"
+                                 emptyMessage="No Trip found with given criteria" widgetVar="taskTable" id="tripstable">
+
+                        <f:facet name="header">
+                            <p:outputPanel>
+                                <h:outputText value="Search all fields:" />
+                                <p:inputText id="globalFilter" onkeyup="PF('taskTable').filter()" style="width:250px" placeholder="Enter keyword"/>
+                            </p:outputPanel>
+                        </f:facet>
+                        <p:column filterBy="#{cust.passengersName}" headerText="Passenger" footerText="contains" filterMatchMode="contains">
+                            #{cust.passengersName}
+                        </p:column>
+                        <p:column filterBy="#{cust.noOfPassengers}" headerText="No of Passengers" footerText="contains" filterMatchMode="contains">
+                            #{cust.noOfPassengers}
+                        </p:column>
+                        <p:column filterBy="#{cust.flightCarrier}" headerText="Flight Carrier" footerText="contains" filterMatchMode="contains">
+                            #{cust.flightCarrier}
+                        </p:column>
+                        <p:column filterBy="#{cust.departure}" headerText="Departure" footerText="contains" filterMatchMode="contains">
+                            #{cust.departure}
+                        </p:column>
+                        <p:column filterBy="#{cust.destination}" headerText="Destination" footerText="contains" filterMatchMode="contains">
+                            <h:outputText value="#{cust.destination}">
+                                <f:convertDateTime pattern="dd/MM/yyyy"/>
+                            </h:outputText>
+                        </p:column>
+                        <p:column filterBy="#{cust.pickupDate}" headerText="Pick Up Date" footerText="contains" filterMatchMode="contains">
+                            <h:outputText value=" #{cust.pickupDate}">
+                                <f:convertDateTime pattern="dd/MM/yyyy"/>
+                            </h:outputText>
+                        </p:column>
+                        <p:column filterBy="#{cust.expectedEndDate}" headerText="End Date" footerText="contains" filterMatchMode="contains">
+                            #{cust.expectedEndDate}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header"></f:facet>
+                            <h:commandLink action="#{registrationBean.showTrips(cust)}"
+                                           value="Edit" styleClass="apply" />
+                        </p:column>
+                    </p:dataTable>
+
+                    <h:commandLink>
+                        <p:graphicImage name="pdf.png" library="images" />
+                        <p:dataExporter type="pdf" target="tripstable" fileName="tritable" />
+                    </h:commandLink>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

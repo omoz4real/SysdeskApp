@@ -1,0 +1,33 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Journey Management - Summary</title>
+        <h:outputStylesheet library="css" name="cssLayout.css" />
+        <h:outputStylesheet library="css" name="default.css" />
+    </h:head>
+    <h:body>
+        <ui:composition template="/templates/mainTemplate.xhtml">
+            <ui:define name="navigation">
+                
+            </ui:define>
+            <ui:param name="title" value="Home page"/>
+            <ui:define name="content">
+                <h:form prependId="false" styleClass="form">
+                    <h:link  outcome="registration"  >
+                        <h:graphicImage library="images" name="cardinal.jpg"/>
+                    </h:link>
+                    <br/>
+                    
+<!--                    <h:commandLink value="Start Journey Management" action="registration"/>-->
+               
+<!--                    <h:link outcome="admin/index" value="To the admin section" /><br />
+                    <h:link outcome="users/index" value="To the user section" />-->
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

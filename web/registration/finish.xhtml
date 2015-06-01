@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <h:outputStylesheet library="css" name="cssLayout.css" />
+        <h:outputStylesheet library="css" name="default.css" />
+    </h:head>
+    <h:body>
+
+        <ui:composition template="./../templates/mainTemplate.xhtml">
+            <ui:define name="content">
+                <h:form>
+                    <h:messages/>
+                    <br/>
+<!--                    <h:dataTable value="#{registrationBean.customers}" var="cust"
+                                 styleClass="people"
+                                 headerClass="orderTableheader"
+                                 columnClasses="inputcountry,inputcity,email,phone,startdate,enddate,status"
+                                 rowClasses="even,odd">
+                        <h:column headerClass="first">
+                            <f:facet name="header">#{msgs.client}</f:facet>
+                    #{cust.inputCity}
+            </p:column>
+            <p:column>
+                <f:facet name="header">#{msgs.contact}</f:facet>
+                    #{cust.inputCountry}
+            </p:column>
+            <p:column>
+                <f:facet name="header">#{msgs.email}</f:facet>
+                    #{cust.email}
+            </p:column>
+            <p:column>
+                <f:facet name="header">#{msgs.phone}</f:facet>
+                    #{cust.phone}
+            </p:column>
+            <p:column>
+                <f:facet name="header">#{msgs.startDate}</f:facet>
+                <h:outputText value="#{cust.startDate}">
+                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                </h:outputText>
+            </p:column>
+            <p:column>
+                <f:facet name="header">#{msgs.endDate}</f:facet>
+                <h:outputText value=" #{cust.endDate}">
+                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                </h:outputText>
+            </p:column>
+            <h:column headerClass="last">
+                <f:facet name="header">#{msgs.status}</f:facet>
+                    #{cust.status}
+            </p:column>
+rowStyleClass="#{car.value eq 'error' ? 'red' : car.value eq 'normal' ? 'normal': null}"
+        </h:dataTable>-->
+                    <p:dataTable value="#{registrationBean.tasks}" var="cust" styleClass="people" rows="15"
+                                 paginator="true" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 rowsPerPageTemplate="15,20,25"
+                                 rowStyleClass="#{cust.status eq 'Completed' ? 'second-row' :  cust.status eq 'Enabled'? 'first-row' : 'red'}"
+                                 emptyMessage="No Task found with given criteria" widgetVar="taskTable">
+
+                        <f:facet name="header">
+                            <p:outputPanel>
+                                <h:outputText value="Search all fields:" />
+                                <p:inputText id="globalFilter" onkeyup="PF('taskTable').filter()" style="width:250px" placeholder="Enter keyword"/>
+                            </p:outputPanel>
+                        </f:facet>
+                        <p:column filterBy="#{cust.client}" headerText="#{msgs.client}" footerText="contains" filterMatchMode="contains">
+                                #{cust.client}
+                        </p:column>
+                        <p:column filterBy="#{cust.contactName}" headerText="#{msgs.contact}" footerText="contains" filterMatchMode="contains">
+                                #{cust.contactName}
+                        </p:column>
+                        <p:column filterBy="#{cust.email}" headerText="#{msgs.email}" footerText="contains" filterMatchMode="contains">
+                                #{cust.email}
+                        </p:column>
+                        <p:column filterBy="#{cust.phone}" headerText="#{msgs.phone}" footerText="contains" filterMatchMode="contains">
+                                #{cust.phone}
+                        </p:column>
+                        <p:column filterBy="#{cust.startDate}" headerText="#{msgs.startDate}" footerText="contains" filterMatchMode="contains">
+                            <h:outputText value="#{cust.startDate}">
+                                <f:convertDateTime pattern="dd/MM/yyyy"/>
+                            </h:outputText>
+                        </p:column>
+                        <p:column filterBy="#{cust.endDate}" headerText="#{msgs.endDate}" footerText="contains" filterMatchMode="contains">
+                            <h:outputText value=" #{cust.endDate}">
+                                <f:convertDateTime pattern="dd/MM/yyyy"/>
+                            </h:outputText>
+                        </p:column>
+                        <p:column filterBy="#{cust.status}" headerText="#{msgs.status}" footerText="contains" filterMatchMode="contains">
+                                #{cust.status}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header"></f:facet>
+                            <h:commandLink action="#{registrationBean.showDetails(cust)}"
+                                           value="update" styleClass="apply"/>
+                        </p:column>
+                    </p:dataTable>
+                    <br/><br/>
+                    <h:commandButton value="Previous" action="trips" styleClass="apply"/>
+                    <h:commandButton value="Next" disabled="true" styleClass="apply"/>
+                    <h:commandButton value="Finish" action="registration-return" styleClass="apply"/>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+
+    </h:body>
+</html>

@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Add Trips</title>
+        <h:outputStylesheet library="css" name="default.css" />
+    </h:head>
+    <h:body>
+        <ui:composition template="/templates/mainTemplate.xhtml">
+            <ui:define name="content">
+                
+                <h:form prependId="false" styleClass="subform" style="margin-left: 350px">
+                    <h1 class="register"> Add Trip </h1>
+                    <h:commandLink action="registration" value="  New Task | " />
+                    <h:commandLink action="trips" value="   Add Trips | " disabled="true" />
+                    <h:commandLink action="summary?faces-redirect=true" value="   Summary    "/>
+                    <br/> <br/>
+                    <h:messages style="color:#ffffff"/>
+                    <h:panelGrid columns="2" cellspacing="2" cellpadding="2" styleClass="">
+                        Passengers Name: <h:inputText size="40" value="#{registrationBean.passengersName}" id="passName"/>
+                        Number of Passengers: <h:inputText size="40" value="#{registrationBean.noOfPassengers}" id="noOfPass"/>
+                        Office: <h:inputText size="40" value="#{registrationBean.office}" id="office"/>
+                        Flight Carrier: <h:inputText size="40" value="#{registrationBean.flightCarrier}" id="flight"/>
+                        Type: <h:inputText size="40" value="#{registrationBean.type}" id="type"/>
+                        Departure: <h:inputText size="40" value="#{registrationBean.departure}" id="departure"/>
+                        Destination: <h:inputText size="40" value="#{registrationBean.destination}" id="destination"/>
+                        Pick up Date: <p:calendar size="25" value="#{registrationBean.pickupDate}" showOn="button" id="pickupdate">
+                        </p:calendar>
+                        Expected End Date: <p:calendar size="25" value="#{registrationBean.expectedEndDate}" showOn="button" id="endDate">
+                        </p:calendar>
+                        Expected Departure Time(EDT): <p:calendar  size="25" value="#{registrationBean.expectedDepartureTime}" pattern="HH:mm a" timeOnly="true" showOn="button" id="departureTime">
+                        </p:calendar>
+                        Vehicle: <h:inputText size="40" value="#{registrationBean.vehicle}" id="vehicle"/>
+                        Vehicle Type: <h:inputText size="40" value="#{registrationBean.vehicleType}" id="vehicleType"/>
+
+                    </h:panelGrid><br/>
+                    <h:commandButton value="Previous" disabled="false" action="registration" styleClass="apply" immediate="true"/>
+                    <h:commandButton value="Next" action="#{registrationBean.validateTrip()}" styleClass="apply"/>
+                    <h:commandButton value="Finish" action="summary" styleClass="apply" immediate="true"/>
+                    <h:commandButton value="Cancel" action="#{registrationBean.cancel()}" styleClass="apply" immediate="true"/>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
